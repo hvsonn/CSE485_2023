@@ -1,3 +1,12 @@
+<?php
+    include("../model/connect.php");
+    $sql = "SELECT * FROM tacgia ";
+    $data = $connect->query($sql);
+    $list_category = [];
+    while ($row = $data->fetch_assoc()) {
+        $list_category[] = $row;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +55,7 @@
         <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
         <div class="row">
             <div class="col-sm">
-                <a href="add_category.php" class="btn btn-success">Thêm mới</a>
+                <a href="add_author.php" class="btn btn-success">Thêm mới</a>
                 <table class="table">
                     <thead>
                         <tr>
@@ -57,27 +66,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Nhạc trữ tình</td>
-                            <td>
-                                <a href="edit_category.php?id=1"><i class="fa-solid fa-pen-to-square"></i></a>
-                            </td>
-                            <td>
-                                <a href=""><i class="fa-solid fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Nhạc cách mạng</td>
-                            <td>
-                                <a href="edit_category.php?id=2"><i class="fa-solid fa-pen-to-square"></i></a>
-                            </td>
-                            <td>
-                                <a href=""><i class="fa-solid fa-trash"></i></a>
-                            </td>
-                        </tr>
-                       
+                    <?php foreach( $list_category as $category): ?>
+                            <tr>
+                                <th scope="row"><?= $category["ma_tgia"] ?></th>
+                                <td><?= $category["ten_tgia"] ?></td>
+                                <td>
+                                    <a href="edit_author.php?id=<?= $category["ma_tgia"] ?>" ><i class="fa-solid fa-pen-to-square"></i></a>
+                                </td>
+                                <td>
+                                    <a href="../author.php?action=delete&id=<?= $category["ma_tgia"] ?>"><i class="fa-solid fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+ 
                     </tbody>
                 </table>
             </div>

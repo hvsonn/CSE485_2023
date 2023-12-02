@@ -1,6 +1,6 @@
 <?php
 $server   = "localhost";   
-$dbname   = "th1";     
+$dbname   = "BTTH01_CSE485";     
 $username = "root";
 $password = "";     
 
