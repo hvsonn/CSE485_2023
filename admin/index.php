@@ -1,3 +1,25 @@
+<?php
+    include("model/connect.php");
+    $sql = "SELECT * FROM users";
+    $data = $connect->query($sql);
+    $list_users = [];
+    while ($row = $data->fetch_assoc()){ $list_users[] = $row; } 
+
+    $sql = "SELECT * FROM theloai";
+    $data = $connect->query($sql);
+    $list_category = [];
+    while ($row = $data->fetch_assoc()){ $list_category[] = $row; } 
+
+    $sql = "SELECT * FROM tacgia";
+    $data = $connect->query($sql);
+    $list_author = [];
+    while ($row = $data->fetch_assoc()){ $list_author[] = $row; } 
+
+    $sql = "SELECT * FROM baiviet";
+    $data = $connect->query($sql);
+    $list_article = [];
+    while ($row = $data->fetch_assoc()){ $list_article[] = $row; } 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,7 +75,7 @@
                         </h5>
 
                         <h5 class="h1 text-center">
-                            110
+                            <?= count($list_users) ?>
                         </h5>
                     </div>
                 </div>
@@ -67,7 +89,7 @@
                         </h5>
 
                         <h5 class="h1 text-center">
-                            10
+                            <?= count($list_category) ?>
                         </h5>
                     </div>
                 </div>
@@ -81,7 +103,7 @@
                         </h5>
 
                         <h5 class="h1 text-center">
-                            20
+                            <?= count($list_author) ?>
                         </h5>
                     </div>
                 </div>
@@ -95,7 +117,7 @@
                         </h5>
 
                         <h5 class="h1 text-center">
-                            110
+                            <?= count($list_article) ?>
                         </h5>
                     </div>
                 </div>
