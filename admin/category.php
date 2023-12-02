@@ -8,7 +8,7 @@ if(isset($_GET["action"])){
 
         $sql = "INSERT INTO theloai (ten_tloai) VALUES ('" . $tentheloai ."')";
         $connect->query($sql);
-        header("Location: /CSE485_2023_TH1/admin/view/add_category.php");
+        header("Location: ../admin/view/category.php");
     }
 
     if($_GET["action"] == "edit"){
@@ -17,7 +17,7 @@ if(isset($_GET["action"])){
 
         $sql = "UPDATE theloai SET ten_tloai='" . $tentheloai . "' WHERE ma_tloai=" . $matheloai;
         $connect->query($sql);
-        header("Location: /CSE485_2023_TH1/admin/view/category.php");
+        header("Location: ../admin/view/category.php");
     }
 
     if($_GET["action"] == "delete"){
@@ -25,7 +25,7 @@ if(isset($_GET["action"])){
 
         $sql = "DELETE FROM theloai WHERE ma_tloai=" . $id;
         $connect->query($sql);
-        header("Location: /CSE485_2023_TH1/admin/view/category.php");
+        header("Location: ../admin/view/category.php");
     }
 }
 ?>
