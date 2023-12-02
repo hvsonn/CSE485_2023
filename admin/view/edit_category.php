@@ -1,3 +1,14 @@
+<?php
+    include("../model/connect.php");
+    $id = isset($_GET["id"]) ? $_GET["id"] :"";
+
+    $sql = "SELECT * FROM theloai WHERE ma_tloai=" . $id;
+    $data = $connect->query($sql);
+    $list_category = [];
+    while ($row = $data->fetch_assoc()) {
+        $list_category = $row;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,15 +57,20 @@
         <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
         <div class="row">
             <div class="col-sm">
-                <h3 class="text-center text-uppercase fw-bold">Thêm mới thể loại</h3>
-                <form action="process_add_category.php" method="post">
+                <h3 class="text-center text-uppercase fw-bold">Sửa thông tin thể loại</h3>
+                <form action="../category.php?action=edit" method="post">
+                <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblCatId">Mã thể loại</span>
+                        <input type="text" class="form-control" name="matheloai" readonly value="<?= $list_category["ma_tloai"] ?>">
+                    </div>
+
                     <div class="input-group mt-3 mb-3">
                         <span class="input-group-text" id="lblCatName">Tên thể loại</span>
-                        <input type="text" class="form-control" name="txtCatName" >
+                        <input type="text" class="form-control" name="tentheloai" value = "<?= $list_category["ten_tloai"] ?>">
                     </div>
 
                     <div class="form-group  float-end ">
-                        <input type="submit" value="Thêm" class="btn btn-success">
+                        <input type="submit" value="Lưu lại" class="btn btn-success">
                         <a href="category.php" class="btn btn-warning ">Quay lại</a>
                     </div>
                 </form>
