@@ -1,37 +1,43 @@
 <?php
 class Author{
-    public $matacigia;
-    public $tentacgia;
-    public $hinhtacgia;
+    private $matacigia;
+    private $tentacgia;
+    private $hinhtacgia;
     public function __construct($matacigia, $tentacgia, $hinhtacgia){
         $this->matacigia=$matacigia;
         $this->tentacgia=$tentacgia;
         $this->hinhtacgia=$hinhtacgia;
-
     }
-    public function themtheloai(){
+    public function getMatacigia(){
+        return $this->matacigia;
+    }
+    public function gettentacgia(){
+        return $this->tentacgia;
+    }
+    public function getHinhtacgia(){
+        return $this->hinhtacgia;
+    }
+    public function themtacgia(){
         include("model/connect.php");
-        $tentheloai = (isset($_POST["tentheloai"])) ? $_POST["tentheloai"] : "";
+        $tentacgia = (isset($_POST["tentacgia"])) ? $_POST["tentacgia"] : "";
 
-        $sql = "INSERT INTO theloai (ten_tloai) VALUES ('" . $tentheloai ."')";
+        $sql = "INSERT INTO tacgia (ten_tgia) VALUES ('" . $tentacgia ."')";
         $connect->query($sql);
-        header("Location: ../admin/view/category.php");
+        header("Location: ../admin/view/author.php");
     }
 
-    public function suatheloai($id){
+    public function suatacgia($id){
         include("model/connect.php");
-        $tentheloai = (isset($_POST["tentheloai"])) ? $_POST["tentheloai"] : "";
-
-        $sql = "UPDATE theloai SET ten_tloai='" . $tentheloai . "' WHERE ma_tloai=" . $id;
+        $tentacgia = (isset($_POST["tentacgia"])) ? $_POST["tentacgia"] : "";
+        $sql = "UPDATE tacgia SET ten_tgia='" . $tentacgia  . "' WHERE ma_tgia=" . $id;
         $connect->query($sql);
-        header("Location: ../admin/view/category.php");
+        header("Location: ../admin/view/author.php");
     }
-    public function xoatheloai($id){
+    public function xoatacgia($id){
         include("model/connect.php");
-
-        $sql = "DELETE FROM theloai WHERE ma_tloai=" . $id;
+        $sql = "DELETE FROM tacgia WHERE ma_tgia=" . $id;
         $connect->query($sql);
-        header("Location: ../admin/view/category.php");
+        header("Location: ../admin/view/author.php");
     }
 }
 ?>

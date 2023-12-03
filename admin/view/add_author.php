@@ -47,15 +47,15 @@
         <div class="row">
             <div class="col-sm">
                 <h3 class="text-center text-uppercase fw-bold">Thêm mới tác giả</h3>
-                <form action="process_add_category.php" method="post">
+                <form action="../author.php?action=add" method="post">
                     <div class="input-group mt-3 mb-3">
                         <span class="input-group-text" id="lblCatName">Tên tác giả</span>
-                        <input type="text" class="form-control" name="txtCatName" >
+                        <input type="text" class="form-control" name="tentacgia" >
                     </div>
 
                     <div class="form-group  float-end ">
                         <input type="submit" value="Thêm" class="btn btn-success">
-                        <a href="category.php" class="btn btn-warning ">Quay lại</a>
+                        <a href="author.php" class="btn btn-warning ">Quay lại</a>
                     </div>
                 </form>
             </div>

@@ -2,9 +2,9 @@
     include("../model/connect.php");
     $sql = "SELECT * FROM tacgia ";
     $data = $connect->query($sql);
-    $list_category = [];
+    $list_author = [];
     while ($row = $data->fetch_assoc()) {
-        $list_category[] = $row;
+        $list_author[] = $row;
     }
 ?>
 <!DOCTYPE html>
@@ -66,15 +66,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <?php foreach( $list_category as $category): ?>
+                    <?php foreach( $list_author as $author): ?>
                             <tr>
-                                <th scope="row"><?= $category["ma_tgia"] ?></th>
-                                <td><?= $category["ten_tgia"] ?></td>
+                                <th scope="row"><?= $author["ma_tgia"] ?></th>
+                                <td><?= $author["ten_tgia"] ?></td>
                                 <td>
-                                    <a href="edit_author.php?id=<?= $category["ma_tgia"] ?>" ><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a href="edit_author.php?id=<?= $author["ma_tgia"] ?>" ><i class="fa-solid fa-pen-to-square"></i></a>
                                 </td>
                                 <td>
-                                    <a href="../author.php?action=delete&id=<?= $category["ma_tgia"] ?>"><i class="fa-solid fa-trash"></i></a>
+                                    <a href="../author.php?action=delete&id=<?= $author["ma_tgia"] ?>"><i class="fa-solid fa-trash"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

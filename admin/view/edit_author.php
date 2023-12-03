@@ -58,20 +58,20 @@
         <div class="row">
             <div class="col-sm">
                 <h3 class="text-center text-uppercase fw-bold">Sửa thông tin tác giả</h3>
-                <form action="process_add_category.php" method="post">
+                <form action="../author.php?action=edit" method="post">
                 <div class="input-group mt-3 mb-3">
                         <span class="input-group-text" id="lblCatId">Mã tác giả</span>
-                        <input type="text" class="form-control" name="matheloai" readonly value="<?= $list_category["ma_tgia"] ?>">
+                        <input type="text" class="form-control" name="matacgia" readonly value="<?= $list_category["ma_tgia"] ?>">
                     </div>
 
                     <div class="input-group mt-3 mb-3">
                         <span class="input-group-text" id="lblCatName">Tên tác giả</span>
-                        <input type="text" class="form-control" name="tentheloai" value = "<?= $list_category["ten_tgia"] ?>">
+                        <input type="text" class="form-control" name="tentacgia" value = "<?= $list_category["ten_tgia"] ?>">
                     </div>
 
                     <div class="form-group  float-end ">
                         <input type="submit" value="Lưu lại" class="btn btn-success">
-                        <a href="category.php" class="btn btn-warning ">Quay lại</a>
+                        <a href="author.php" class="btn btn-warning ">Quay lại</a>
                     </div>
                 </form>
             </div>
