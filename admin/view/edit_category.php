@@ -59,7 +59,7 @@
             <div class="col-sm">
                 <h3 class="text-center text-uppercase fw-bold">Sửa thông tin thể loại</h3>
                 <form action="../category.php?action=edit" method="post">
-                <div class="input-group mt-3 mb-3">
+                    <div class="input-group mt-3 mb-3">
                         <span class="input-group-text" id="lblCatId">Mã thể loại</span>
                         <input type="text" class="form-control" name="matheloai" readonly value="<?= $list_category["ma_tloai"] ?>">
                     </div>
