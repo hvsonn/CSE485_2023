@@ -1,3 +1,14 @@
+<?php
+    include("../model/connect.php");
+    $id = isset($_GET["id"]) ? $_GET["id"] :"";
+
+    $sql = "SELECT * FROM baiviet WHERE ma_bviet=" . $id;
+    $data = $connect->query($sql);
+    $list_article = [];
+    while ($row = $data->fetch_assoc()) {
+        $list_article = $row;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,18 +57,40 @@
         <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
         <div class="row">
             <div class="col-sm">
-                <h3 class="text-center text-uppercase fw-bold">Sửa thông tin thể loại</h3>
-                <form action="process_add_category.php" method="post">
+                <h3 class="text-center text-uppercase fw-bold">Sửa thông tin bài viết</h3>
+                <form action="../article.php?action=edit" method="post">
                 <div class="input-group mt-3 mb-3">
-                        <span class="input-group-text" id="lblCatId">Mã thể loại</span>
-                        <input type="text" class="form-control" name="txtCatId" readonly value="1">
+                        <span class="input-group-text" id="lblCatId">Mã bài viết</span>
+                        <input type="text" class="form-control" name="id" readonly value="<?= $list_article["ma_bviet"]  ?>">
                     </div>
-
                     <div class="input-group mt-3 mb-3">
-                        <span class="input-group-text" id="lblCatName">Tên thể loại</span>
-                        <input type="text" class="form-control" name="txtCatName" value = "Nhạc trữ tình">
+                        <span class="input-group-text" id="lblCatName">Tiêu đề</span>
+                        <input type="text" class="form-control" name="tieude" value = "<?= $list_article["tieude"]  ?>">
                     </div>
-
+                    <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblCatName">Tên bài hát</span>
+                        <input type="text" class="form-control" name="tenbaihat" value = "<?= $list_article["ten_bhat"]  ?>">
+                    </div>
+                    <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblCatName">Mã thể loại</span>
+                        <input type="text" class="form-control" name="matheloai" value = "<?= $list_article["ma_tloai"]  ?>">
+                    </div>
+                    <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblCatName">Tóm tắt</span>
+                        <input type="text" class="form-control" name="tomtat" value = "<?= $list_article["tomtat"]  ?>">
+                    </div>
+                    <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblCatName">Nội dung</span>
+                        <input type="text" class="form-control" name="noidung" value = "<?= $list_article["noidung"]  ?>">
+                    </div>
+                    <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblCatName">Mã tác giả</span>
+                        <input type="text" class="form-control" name="matacgia" value = "<?= $list_article["ma_tgia"]  ?>">
+                    </div>
+                    <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblCatName">Hình ảnh</span>
+                        <input type="text" class="form-control" name="hinhanh" value = "<?= $list_article["hinhanh"]  ?>">
+                    </div>
                     <div class="form-group  float-end ">
                         <input type="submit" value="Lưu lại" class="btn btn-success">
                         <a href="category.php" class="btn btn-warning ">Quay lại</a>
