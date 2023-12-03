@@ -67,15 +67,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach( $list_category as $category): ?>
+                        <?php foreach( $list_category as $author): ?>
                             <tr>
-                                <th scope="row"><?= $category["ma_tloai"] ?></th>
-                                <td><?= $category["ten_tloai"] ?></td>
+                                <th scope="row"><?= $author["ma_tloai"] ?></th>
+                                <td><?= $author["ten_tloai"] ?></td>
                                 <td>
-                                    <a href="edit_category.php?id=<?= $category["ma_tloai"] ?>" ><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a href="edit_category.php?id=<?= $author["ma_tloai"] ?>" ><i class="fa-solid fa-pen-to-square"></i></a>
                                 </td>
                                 <td>
-                                    <a href="../category.php?action=delete&id=<?= $category["ma_tloai"] ?>"><i class="fa-solid fa-trash"></i></a>
+                                    <a href="../category.php?action=delete&id=<?= $author["ma_tloai"] ?>"><i class="fa-solid fa-trash"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
