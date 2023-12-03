@@ -1,3 +1,12 @@
+<?php
+    include("../model/connect.php");
+    $sql = "SELECT * FROM baiviet ";
+    $data = $connect->query($sql);
+    $list_article = [];
+    while ($row = $data->fetch_assoc()) {
+        $list_article[] = $row;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,38 +55,44 @@
         <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
         <div class="row">
             <div class="col-sm">
-                <a href="add_category.php" class="btn btn-success">Thêm mới</a>
+                <a href="add_article.php" class="btn btn-success">Thêm mới</a>
                 <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Tên thể loại</th>
+                            <th scope="col">Tiêu đề</th>
+                            <th scope="col">Tên bài hát</th>
+                            <th scope="col">Mã thể loại</th>
+                            <th scope="col">Tóm tắt</th>
+                            <th scope="col">Nội dung</th>
+                            <th scope="col">Mã tác giả</th>
+                            <th scope="col">Ngày viết</th>
+                            <th scope="col">Hình ảnh</th>
                             <th>Sửa</th>
                             <th>Xóa</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach( $list_article as $article): ?>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Nhạc trữ tình</td>
+                            <th scope="row"><?= $article["ma_bviet"] ?></th>
+                            <th scope="row"><?= $article["tieude"] ?></th>
+                            <th scope="row"><?= $article["ten_bhat"] ?></th>
+                            <th scope="row"><?= $article["ma_tloai"] ?></th>
+                            <th scope="row"><?= $article["tomtat"] ?></th>
+                            <th scope="row"><?= $article["noidung"] ?></th>
+                            <th scope="row"><?= $article["ma_tgia"] ?></th>
+                            <th scope="row"><?= $article["ngayviet"] ?></th>
+                            <th scope="row"><?= $article["hinhanh"] ?></th>
+                            <td></td>
                             <td>
-                                <a href="edit_category.php?id=1"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="edit_article.php?id=<?= $article["ma_bviet"] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
                             </td>
                             <td>
-                                <a href=""><i class="fa-solid fa-trash"></i></a>
+                                <a href="../article.php?action=delete&id=<?= $article["ma_bviet"] ?>"><i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Nhạc cách mạng</td>
-                            <td>
-                                <a href="edit_category.php?id=2"><i class="fa-solid fa-pen-to-square"></i></a>
-                            </td>
-                            <td>
-                                <a href=""><i class="fa-solid fa-trash"></i></a>
-                            </td>
-                        </tr>
-                       
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
