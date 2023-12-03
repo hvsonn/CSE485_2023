@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 02, 2023 at 04:40 PM
+-- Generation Time: Dec 03, 2023 at 02:53 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -100,14 +100,14 @@ CREATE TABLE `theloai` (
 --
 
 INSERT INTO `theloai` (`ma_tloai`, `ten_tloai`) VALUES
-(1, 'Nhạc trẻ'),
+(1, 'Nhạc trẻ1'),
 (2, 'Nhạc trữ tình'),
 (3, 'Nhạc cách mạng'),
 (4, 'Nhạc thiếu nhi'),
 (5, 'Nhạc quê hương'),
 (6, 'POP'),
 (7, 'Rock'),
-(8, 'R&B');
+(8, 'R&BD');
 
 -- --------------------------------------------------------
 
@@ -139,8 +139,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `pass`) VALUES
 --
 ALTER TABLE `baiviet`
   ADD PRIMARY KEY (`ma_bviet`),
-  ADD KEY `ma_tloai` (`ma_tloai`),
-  ADD KEY `ma_tgia` (`ma_tgia`);
+  ADD KEY `baiviet_ibfk_1` (`ma_tloai`),
+  ADD KEY `baiviet_ibfk_2` (`ma_tgia`);
 
 --
 -- Indexes for table `tacgia`
@@ -163,6 +163,24 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `baiviet`
+--
+ALTER TABLE `baiviet`
+  MODIFY `ma_bviet` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `tacgia`
+--
+ALTER TABLE `tacgia`
+  MODIFY `ma_tgia` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `theloai`
+--
+ALTER TABLE `theloai`
+  MODIFY `ma_tloai` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
